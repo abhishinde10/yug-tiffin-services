@@ -1,6 +1,6 @@
 function DataTable({ columns, rows }) {
   return (
-    <div className="card">
+    <div className="table-wrapper">
       <div style={{ overflowX: 'auto' }}>
         <table className="table">
           <thead>
@@ -13,7 +13,7 @@ function DataTable({ columns, rows }) {
           <tbody>
             {rows.length === 0 ? (
               <tr>
-                <td colSpan={columns.length}>No data available</td>
+                <td colSpan={columns.length} style={{ textAlign: 'center', color: '#94a3b8', padding: '2rem 1rem' }}>No data available</td>
               </tr>
             ) : (
               rows.map((row) => (
@@ -32,4 +32,3 @@ function DataTable({ columns, rows }) {
 }
 
 export default DataTable
-
