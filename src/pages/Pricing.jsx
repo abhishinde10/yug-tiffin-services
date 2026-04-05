@@ -1,64 +1,92 @@
 function Pricing() {
+  const handleWhatsApp = (message) => {
+    const encodedMessage = encodeURIComponent(message);
+    const url = `https://wa.me/918888165662?text=${encodedMessage}`;
+    console.log("Redirecting to WhatsApp:", message);
+    window.open(url, "_blank");
+  };
+
   return (
-    <section className="page-section">
+    <section className="pricing-section">
       <div className="page-container">
-        <h1 className="page-title">Plans &amp; Pricing</h1>
-        <p className="page-subtitle">
-          Simple monthly plans designed for students with predictable budgets.
-        </p>
+
+        <div className="pricing-header">
+          <p className="section-label">Mess Plans</p>
+          <h1 className="pricing-main-title">Simple & Affordable Plans</h1>
+          <p className="pricing-main-subtitle">
+            Home-style meals at student-friendly prices. Choose a plan that fits your schedule.
+          </p>
+        </div>
 
         <div className="pricing-grid">
+
+          {/* PLAN 2 - Basic */}
           <div className="pricing-card">
             <h3 className="plan-name">Basic Plan</h3>
             <div className="plan-price">
-              ₹2500<span>/month</span>
+              ₹1800<span>/month</span>
             </div>
-            <p className="plan-duration">Lunch Only</p>
+            <p className="plan-duration">One Time Meal (30 Meals)</p>
             <ul className="plan-features">
-              <li>Lunch (Mon–Sat)</li>
-              <li>Fresh daily meals</li>
-              <li>Standard rotating menu</li>
-              <li>Digital billing</li>
+              <li>30 meals per month</li>
+              <li>Lunch or Dinner option</li>
+              <li>Simple and healthy food</li>
+              <li>Budget-friendly plan</li>
             </ul>
-            <button type="button" className="btn btn-primary">
-              Join Now
+            <button 
+              type="button" 
+              className="plan-btn"
+              onClick={() => handleWhatsApp("Hello, I am interested in Basic Plan (₹1800/month - 30 meals). Please share details.")}
+            >
+              Join Plan
             </button>
           </div>
 
+          {/* PLAN 1 - Regular (Most Popular / Featured) */}
           <div className="pricing-card featured">
-            <span className="popular-badge">Most Popular</span>
-            <h3 className="plan-name">Standard Plan</h3>
+            <span className="popular-badge">⭐ MOST POPULAR</span>
+            <h3 className="plan-name">Regular Plan</h3>
             <div className="plan-price">
-              ₹3500<span>/month</span>
+              ₹3000<span>/month</span>
             </div>
-            <p className="plan-duration">Lunch + Dinner</p>
+            <p className="plan-duration">Lunch + Dinner (Mon–Sun)</p>
             <ul className="plan-features">
-              <li>Lunch &amp; Dinner (Mon–Sat)</li>
-              <li>Premium menu options</li>
-              <li>Digital billing &amp; receipts</li>
-              <li>Parcel booking access</li>
+              <li>Two time home-style meals</li>
+              <li>Fresh and hygienic food</li>
+              <li>Balanced daily menu</li>
+              <li>Affordable monthly pricing</li>
             </ul>
-            <button type="button" className="btn btn-secondary">
-              Join Now
+            <button 
+              type="button" 
+              className="plan-btn plan-btn-featured"
+              onClick={() => handleWhatsApp("Hello, I am interested in Regular Plan (₹3000/month - Lunch + Dinner). Please share details.")}
+            >
+              Join Plan
             </button>
           </div>
 
+          {/* PLAN 3 - Single Meal */}
           <div className="pricing-card">
-            <h3 className="plan-name">Premium Plan</h3>
+            <h3 className="plan-name">Single Meal Option</h3>
             <div className="plan-price">
-              ₹4000<span>/month</span>
+              ₹15<span> / roti</span>
             </div>
-            <p className="plan-duration">Full Access</p>
+            <p className="plan-duration">Flexible Add-on</p>
             <ul className="plan-features">
-              <li>All meals (7 days)</li>
-              <li>Priority parcel booking</li>
-              <li>Sunday meals included</li>
-              <li>Detailed payment history</li>
+              <li>Single chapati / roti pricing</li>
+              <li>Add extra as needed</li>
+              <li>Freshly made daily</li>
+              <li>Pay per item</li>
             </ul>
-            <button type="button" className="btn btn-primary">
-              Join Now
+            <button 
+              type="button" 
+              className="plan-btn"
+              onClick={() => handleWhatsApp("Hello, I am interested in Single Meal Option (₹15/roti). Please share details.")}
+            >
+              Join Plan
             </button>
           </div>
+
         </div>
       </div>
     </section>
@@ -66,4 +94,3 @@ function Pricing() {
 }
 
 export default Pricing
-

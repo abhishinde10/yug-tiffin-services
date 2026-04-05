@@ -47,7 +47,7 @@ function Footer() {
             </div>
             <div className="footer-contact-item">
               <Phone size={20} />
-              <span>+91 98765 43210</span>
+              <span>+91 88881 65662</span>
             </div>
             <div className="footer-contact-item">
               <MessageCircle size={20} />

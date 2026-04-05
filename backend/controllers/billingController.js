@@ -39,18 +39,20 @@ const createBill = async (req, res, next) => {
   try {
     const { studentId, month, year, amount, dueDate } = req.body;
     
+    // Fetch student name from User collection
     const student = await User.findById(studentId);
     if (!student) {
       res.status(404);
       throw new Error('Student not found');
     }
 
+    // Save bill with status = "pending"
     const bill = await Billing.create({
       studentId: student._id,
       studentName: student.name,
       month,
-      year,
-      amount,
+      year: Number(year),
+      amount: Number(amount),
       status: 'pending',
       dueDate
     });
@@ -61,41 +63,51 @@ const createBill = async (req, res, next) => {
   }
 };
 
-// @desc    Get bills (Admin can view all, Student can view theirs)
-// @route   GET /api/billing
-// @access  Private
-const getBills = async (req, res, next) => {
+// @desc    Get all bills (Admin)
+// @route   GET /api/billing/all
+// @access  Private/Admin
+const getAllBills = async (req, res, next) => {
   try {
-    let query = {};
-    if (req.user.role === 'admin') {
-       if (req.query.month) {
-           query.month = req.query.month;
-       }
-    } else {
-       query.studentId = req.user._id;
-    }
-
-    const bills = await Billing.find(query).populate('studentId', 'name email phone');
+    // Return all bills with student details
+    const bills = await Billing.find({}).populate('studentId', 'name email phone').sort({ createdAt: -1 });
     res.json(bills);
   } catch (error) {
     next(error);
   }
 };
 
-// @desc    Update bill status
-// @route   PUT /api/billing/:id
-// @access  Private/Admin
-const updateBill = async (req, res, next) => {
+// @desc    Get student bills
+// @route   GET /api/billing/student/:id
+// @access  Private 
+const getStudentBills = async (req, res, next) => {
   try {
-    const { status } = req.body;
+    const studentId = req.params.id;
 
+    // Optional security: check if req.user._id == studentId or admin
+    if (req.user.role !== 'admin' && req.user._id.toString() !== studentId) {
+       res.status(403);
+       throw new Error('Not authorized to view these bills');
+    }
+
+    // Return only bills of that student
+    const bills = await Billing.find({ studentId }).sort({ createdAt: -1 });
+    res.json(bills);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// @desc    Mark bill as paid
+// @route   PUT /api/billing/:id/pay
+// @access  Private/Admin
+const markBillPaid = async (req, res, next) => {
+  try {
     const bill = await Billing.findById(req.params.id);
 
     if (bill) {
-      bill.status = status || bill.status;
-      if (status === 'paid') {
-        bill.paymentDate = Date.now();
-      }
+      // Update status = "paid"
+      bill.status = 'paid';
+      bill.paymentDate = Date.now();
 
       const updatedBill = await bill.save();
       res.json(updatedBill);
@@ -111,6 +123,7 @@ const updateBill = async (req, res, next) => {
 module.exports = {
   generateBills,
   createBill,
-  getBills,
-  updateBill,
+  getAllBills,
+  getStudentBills,
+  markBillPaid,
 };

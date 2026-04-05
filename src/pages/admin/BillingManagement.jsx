@@ -28,9 +28,14 @@ function BillingManagement() {
 
   const fetchBills = async () => {
     try {
-      const url = filterMonth ? `/admin/bills?month=${encodeURIComponent(filterMonth)}` : '/admin/bills'
+      const url = '/billing/all'
       const res = await api.get(url)
-      setBills(res.data)
+      
+      let fetchedBills = res.data;
+      if (filterMonth) {
+        fetchedBills = fetchedBills.filter(b => b.month === filterMonth)
+      }
+      setBills(fetchedBills)
     } catch (error) {
       toast.error('Failed to load billing records.')
     } finally {
@@ -38,18 +43,23 @@ function BillingManagement() {
     }
   }
 
-  const fetchActiveStudents = async () => {
+  const fetchStudents = async () => {
     try {
       const res = await api.get('/admin/students')
-      setStudents(res.data.filter(s => s.membershipPlan !== 'none'))
-    } catch (error) { // silent catch for background populate
+      console.log("Students:", res.data);
+      setStudents(Array.isArray(res.data) ? res.data : []);
+    } catch (err) {
+      console.error("Error fetching students:", err);
+      setStudents([]);
     }
   }
 
   useEffect(() => {
     fetchBills()
-    fetchActiveStudents()
+    fetchStudents()
   }, [filterMonth])
+
+  console.log("Students state:", students);
 
   const handleUpdateStatus = async (id, newStatus) => {
     try {
@@ -97,10 +107,16 @@ function BillingManagement() {
                 <div style={{ gridColumn: '1 / -1' }}>
                   <label style={{display: 'block', marginBottom: '0.4rem', fontSize: '0.875rem', fontWeight: 500}}>Student</label>
                   <select className="input-field" value={generateData.studentId} onChange={e => setGenerateData({...generateData, studentId: e.target.value})} required>
-                    <option value="" disabled>Select a student...</option>
-                    {students.map(s => (
-                      <option key={s._id} value={s._id}>{s.name} ({s.phone})</option>
-                    ))}
+                    <option value="" disabled>Select a student</option>
+                    {students.length > 0 ? (
+                      students.map((student) => ( 
+                        <option key={student._id} value={student._id}>
+                          {student.name || student.email} 
+                        </option>
+                      ))
+                    ) : ( 
+                      <option disabled>No students found</option>
+                    )} 
                   </select>
                 </div>
 
@@ -146,27 +162,42 @@ function BillingManagement() {
             </select>
           </div>
 
-          {loading ? <p>Loading billing data...</p> : (
+          {loading ? (
+            <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
+              <div style={{ width: '40px', height: '40px', border: '4px solid #f3f3f3', borderTop: '4px solid #3b82f6', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+              <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+            </div>
+          ) : bills.length === 0 ? (
+            <div className="card" style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+              <h3 style={{ color: 'var(--text-light)' }}>No bills available</h3>
+            </div>
+          ) : (
             <DataTable
               columns={[
                 { key: 'student', header: 'Student Name' },
-                { key: 'monthYear', header: 'Billing Period' },
+                { key: 'month', header: 'Month' },
                 { key: 'amount', header: 'Amount' },
                 { key: 'dueDate', header: 'Due Date' },
                 { key: 'status', header: 'Status' },
-                { key: 'actions', header: 'Actions' },
+                { key: 'actions', header: 'Action Button' },
               ]}
               rows={bills.map(b => ({
                 id: b._id,
                 student: b.studentName || b.studentId?.name || 'Unknown',
-                monthYear: `${b.month} ${b.year || ''}`.trim(),
+                month: b.month,
                 amount: `₹${b.amount}`,
                 dueDate: new Date(b.dueDate).toLocaleDateString(),
                 status: (
                   <span
-                    className={`badge ${
-                      b.status === 'paid' ? 'badge-success' : 'badge-warning'
-                    }`}
+                    className="badge"
+                    style={{
+                      backgroundColor: b.status === 'paid' ? '#10b981' : '#ef4444',
+                      color: 'white',
+                      padding: '0.25rem 0.5rem',
+                      borderRadius: '4px',
+                      fontSize: '0.75rem',
+                      fontWeight: 'bold'
+                    }}
                   >
                     {b.status.toUpperCase()}
                   </span>
@@ -177,7 +208,7 @@ function BillingManagement() {
                       <button 
                         onClick={() => handleUpdateStatus(b._id, 'paid')} 
                         className="btn btn-outline" 
-                        style={{ padding: '0.35rem 0.6rem', fontSize: '0.8rem', color: '#16a34a', borderColor: '#16a34a' }}
+                        style={{ padding: '0.35rem 0.6rem', fontSize: '0.8rem', color: '#10b981', borderColor: '#10b981' }}
                       >
                         ✓ Mark Paid
                       </button>

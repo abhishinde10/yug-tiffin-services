@@ -4,9 +4,9 @@ const billingSchema = mongoose.Schema({
   studentId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
   studentName: { type: String, required: true },
   month: { type: String, required: true },
-  year: { type: String, required: true },
+  year: { type: Number, required: true },
   amount: { type: Number, required: true },
-  status: { type: String, enum: ['paid', 'pending'], default: 'pending' },
+  status: { type: String, default: 'pending' },
   dueDate: { type: Date, required: true },
   paymentDate: { type: Date },
 }, { timestamps: true });

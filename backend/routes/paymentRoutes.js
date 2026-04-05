@@ -4,6 +4,8 @@ const {
   getPayments,
   createPayment,
   updatePayment,
+  createOrder,
+  verifyPayment,
 } = require('../controllers/paymentController');
 const { protect } = require('../middleware/authMiddleware');
 const { admin } = require('../middleware/adminMiddleware');
@@ -11,6 +13,9 @@ const { admin } = require('../middleware/adminMiddleware');
 router.route('/')
   .get(protect, getPayments)            // Students see their own, Admin sees all
   .post(protect, admin, createPayment); // Admin creates payment records
+
+router.post('/create-order', protect, createOrder);
+router.post('/verify', protect, verifyPayment);
 
 router.route('/:id')
   .put(protect, admin, updatePayment);  // Admin updates payment status

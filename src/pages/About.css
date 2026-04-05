@@ -1,0 +1,313 @@
+/* About.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;500;600&display=swap');
+
+.about-page {
+  background-color: #fff8f2;
+  background-image: 
+    radial-gradient(at top right, rgba(255, 122, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(at bottom left, rgba(255, 122, 0, 0.08) 0%, transparent 60%);
+  color: #3b2f2f;
+  font-family: 'Poppins', sans-serif;
+  padding: 8rem 2rem 6rem; /* Extra top padding for fixed navbar */
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+/* 1. Header Section */
+.about-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem;
+}
+
+.about-legacy-text {
+  color: #ff7a00;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.about-main-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: #3b2f2f;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.about-tagline {
+  font-size: 1.6rem;
+  color: #ff7a00;
+  font-weight: 500;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  opacity: 0.9;
+}
+
+/* 2. Main Content Layout */
+.about-content-container {
+  max-width: 1100px;
+  margin: 0 auto 7rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(59, 47, 47, 0.12);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-image-wrapper:hover {
+  transform: scale(1.03);
+}
+
+.about-image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(59,47,47,0.2) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.about-main-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+}
+
+.about-text-wrapper p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #5a4b4b;
+  margin-bottom: 1.5rem;
+}
+
+.about-text-wrapper strong {
+  color: #3b2f2f;
+  font-weight: 600;
+  color: #ff7a00;
+}
+
+/* Dividers */
+.about-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 122, 0, 0.3), transparent);
+  max-width: 800px;
+  margin: 4rem auto;
+  transform-origin: center;
+}
+
+/* 3. Legacy / Inspiration Section */
+.about-inspiration-section {
+  max-width: 950px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(255, 122, 0, 0.08);
+  border: 1px solid rgba(255, 122, 0, 0.15);
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1;
+}
+
+.about-inspiration-section:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 50px rgba(255, 122, 0, 0.12);
+}
+
+.inspiration-image-wrapper {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid #fff8f2;
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.5), 0 15px 25px rgba(255, 122, 0, 0.15);
+}
+
+.inspiration-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inspiration-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  color: #3b2f2f;
+  margin-bottom: 0.5rem;
+}
+
+.inspiration-subtitle {
+  color: #ff7a00;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.05rem;
+}
+
+.inspiration-quote {
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #ff7a00;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+  max-width: 80%;
+}
+
+.inspiration-desc {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #5a4b4b;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 4. Team Section */
+.about-team-section {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.team-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.team-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: #3b2f2f;
+  margin-bottom: 0.5rem;
+}
+
+.team-subtitle {
+  color: #ff7a00;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.team-cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.team-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(59, 47, 47, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 122, 0, 0.05);
+}
+
+.team-card-img-wrapper {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #fff8f2;
+  box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.2);
+}
+
+.team-card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card-name {
+  font-size: 1.35rem;
+  color: #3b2f2f;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.team-card-role {
+  color: #ff7a00;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.team-card-desc {
+  font-size: 0.95rem;
+  color: #5a4b4b;
+  line-height: 1.6;
+}
+
+/* Responsive Rules */
+@media (max-width: 1024px) {
+  .about-content-container {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .about-content-container {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    max-width: 600px;
+  }
+  
+  .about-text-wrapper {
+    text-align: center;
+  }
+  
+  .about-inspiration-section {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .inspiration-image-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .inspiration-title {
+    font-size: 2.4rem;
+  }
+  
+  .team-cards-container {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  .about-main-heading {
+    font-size: 2.8rem;
+  }
+  
+  .about-tagline {
+    font-size: 1.3rem;
+  }
+  
+  .team-cards-container {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

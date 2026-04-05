@@ -7,7 +7,7 @@ const {
   updateStudent,
   deleteStudent,
 } = require('../controllers/adminController');
-const { getBills } = require('../controllers/billingController');
+// Removed getting bills here, handling it directly via billingRoutes
 const { protect } = require('../middleware/authMiddleware');
 const { admin } = require('../middleware/adminMiddleware');
 
@@ -22,7 +22,6 @@ router.post('/add-student', protect, admin, addStudent);
 router.put('/update-student/:id', protect, admin, updateStudent);
 router.delete('/delete-student/:id', protect, admin, deleteStudent);
 
-// Manage Bills
-router.get('/bills', protect, admin, getBills);
+// Handle bills directly through /api/billing/
 
 module.exports = router;

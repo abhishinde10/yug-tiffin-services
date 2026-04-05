@@ -25,6 +25,7 @@ import MenuManagement from './pages/admin/MenuManagement.jsx'
 import BillingManagement from './pages/admin/BillingManagement.jsx'
 import PaymentManagement from './pages/admin/PaymentManagement.jsx'
 import ParcelOrders from './pages/admin/ParcelOrders.jsx'
+import FeedbackManagement from './pages/admin/FeedbackManagement.jsx'
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
               <Route path="billing" element={<BillingManagement />} />
               <Route path="payments" element={<PaymentManagement />} />
               <Route path="parcels" element={<ParcelOrders />} />
+              <Route path="feedbacks" element={<FeedbackManagement />} />
             </Route>
           </Route>
 

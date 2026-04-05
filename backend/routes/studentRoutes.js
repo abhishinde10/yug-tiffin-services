@@ -7,7 +7,7 @@ const {
 } = require('../controllers/studentController');
 const { getMenus } = require('../controllers/menuController');
 const { getPayments } = require('../controllers/paymentController');
-const { getBills } = require('../controllers/billingController');
+// Handle bills directly through /api/billing/
 const { protect } = require('../middleware/authMiddleware');
 
 // Dashboard
@@ -22,8 +22,7 @@ router.post('/parcel', protect, createParcel);
 // Payments (Students view their own payments)
 router.get('/payments', protect, getPayments);
 
-// Bills
-router.get('/bills', protect, getBills);
+// Handle bills directly through /api/billing/
 
 // Feedback
 router.post('/feedback', protect, submitFeedback);

@@ -82,6 +82,15 @@ function Sidebar() {
           >
             Parcel Orders
           </NavLink>
+          <NavLink
+            to="/admin/feedbacks"
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? 'sidebar-link-active' : ''}`
+            }
+            onClick={closeSidebar}
+          >
+            Feedback Management
+          </NavLink>
         </nav>
       </aside>
     </>

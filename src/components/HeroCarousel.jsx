@@ -3,6 +3,7 @@ import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import messBanner from '../assets/images/Mess_Banner.jpg'
+import crowdPhoto from '../assets/images/crowd_photo.png';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -18,14 +19,14 @@ const slides = [
   },
   {
     id: 2,
-    image: 'https://atmiyauni.ac.in/images/mes2.jpg',
+    image: 'https://img.freepik.com/premium-photo/indian-hindu-veg-thali-food-platter-selective-focus_466689-36317.jpg?w=2000',
     title: 'Authentic Maharashtrian <br/> Thali',
     subtitle: 'Taste the real flavors of Maharashtra every day',
   },
   {
 
     id: 3,
-    image: 'https://img.freepik.com/premium-photo/indian-hindu-veg-thali-food-platter-selective-focus_466689-36317.jpg?w=2000',
+    image: crowdPhoto,
     title: 'Clean & Hygienic <br/> Environment',
     subtitle: 'Prepared in a sanitized kitchen with strict food safety',
   }
