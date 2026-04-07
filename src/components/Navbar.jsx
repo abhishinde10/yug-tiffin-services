@@ -33,26 +33,13 @@ function Navbar() {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="logo-container" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-          <img
-            src={logo}
-            alt="Yug Tiffin Services Logo"
-            className="navbar-logo"
-          />
-        </div>
-
-        <a
-          href="https://maps.app.goo.gl/AqBEp3Pm581XZbqE6"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="location-box"
-        >
-          <span className="location-icon">📍</span>
-          <div>
-            <p className="location-small">Visit Us</p>
-            <p className="location-bold">Yug Tiffin Service</p>
+        <div className="logo-section" onClick={() => window.open("https://maps.google.com/?q=KK+Wagh+Engineering+College+Nashik", "_blank")} style={{ cursor: 'pointer' }}>
+          <img src={logo} alt="Yug Tiffin Services Logo" className="navbar-logo" />
+          <div className="logo-text">
+            <small>Visit Us</small>
+            <span>Yug Tiffin Service</span>
           </div>
-        </a>
+        </div>
 
         <ul className={`nav-menu ${isOpen ? 'nav-open' : ''}`}>
           {navItems.map((item) => (
