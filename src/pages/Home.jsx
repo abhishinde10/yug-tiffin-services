@@ -142,16 +142,6 @@ function Home() {
         </div>
       </MotionSection>
 
-      {/* Floating WhatsApp Button */}
-      <a
-        href="https://wa.me/+918888165662"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="chat-whatsapp"
-      >
-        <MessageCircle size={24} />
-        <span>Chat on WhatsApp</span>
-      </a>
     </>
   )
 }

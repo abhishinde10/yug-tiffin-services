@@ -4,6 +4,7 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import { Toaster } from 'react-hot-toast'
+import WhatsAppButton from './components/WhatsAppButton.jsx'
 
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
@@ -73,6 +74,7 @@ function App() {
       </div>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }

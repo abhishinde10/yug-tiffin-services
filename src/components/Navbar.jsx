@@ -36,8 +36,8 @@ function Navbar() {
         <div className="logo-section" onClick={() => window.open("https://maps.google.com/?q=KK+Wagh+Engineering+College+Nashik", "_blank")} style={{ cursor: 'pointer' }}>
           <img src={logo} alt="Yug Tiffin Services Logo" className="navbar-logo" />
           <div className="logo-text">
-            <small>Visit Us</small>
-            <span>Yug Tiffin Service</span>
+            <small>📍 Visit Us</small>
+            <span> Yug Tiffin Service</span>
           </div>
         </div>
 
