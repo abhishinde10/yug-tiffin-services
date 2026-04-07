@@ -19,7 +19,7 @@ function DataTable({ columns, rows }) {
               rows.map((row) => (
                 <tr key={row.id ?? JSON.stringify(row)}>
                   {columns.map((col) => (
-                    <td key={col.key}>{row[col.key]}</td>
+                    <td key={col.key} data-label={col.header}>{row[col.key]}</td>
                   ))}
                 </tr>
               ))

@@ -31,68 +31,62 @@ function AdminDashboard() {
 
   return (
     <>
-          <motion.header
-            className="dashboard-header"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            <h1 className="dashboard-title">Admin Dashboard</h1>
-            <p className="page-subtitle">
-              Overview of students, income, payments, and parcel orders.
-            </p>
-          </motion.header>
+      <motion.header
+        className="dashboard-header"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <h1 className="dashboard-title">Admin Dashboard</h1>
+        <p className="page-subtitle">
+          Overview of students, billing, tiffins tracking, and parcel orders.
+        </p>
+      </motion.header>
 
-          {loading ? (
-            <p>Loading dashboard...</p>
-          ) : (
-            <motion.div
-              className="dashboard-grid"
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-            >
-              <DashboardCard
-                label="Total Students"
-                value={stats.totalStudents}
-                subtext="Registered users"
-                icon="👥"
-                accent="green"
-              />
-              <DashboardCard
-                label="Active Memberships"
-                value={stats.activeMemberships}
-                subtext="With meal plan"
-                icon="🍽️"
-                accent="blue"
-              />
-              <DashboardCard
-                label="Pending Payments"
-                value={stats.pendingPayments}
-                subtext="Students to follow up"
-                icon="⏳"
-                accent="orange"
-              />
-              <DashboardCard
-                label="Today's Parcels"
-                value={stats.todaysParcels}
-                subtext="Pending orders"
-                icon="📦"
-                accent="purple"
-              />
-              <DashboardCard
-                label="Monthly Revenue"
-                value={`₹${stats.monthlyRevenue || 0}`}
-                subtext="Paid this month"
-                icon="💰"
-                accent="green"
-              />
-            </motion.div>
-          )}
+      {loading ? (
+        <p>Loading dashboard...</p>
+      ) : (
+        <motion.div
+          className="dashboard-grid"
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          <DashboardCard
+            label="Total Students"
+            value={stats.totalStudents}
+            subtext="Registered users"
+            icon="👥"
+            accent="green"
+          />
+          <DashboardCard
+            label="Active Memberships"
+            value={stats.activeMemberships}
+            subtext="With meal plan"
+            icon="🍽️"
+            accent="blue"
+          />
+          <DashboardCard
+            label="Pending Payments"
+            value={stats.pendingPayments}
+            subtext="Students to follow up"
+            icon="⏳"
+            accent="orange"
+          />
+          <DashboardCard
+            label="Today's Parcels"
+            value={stats.todaysParcels}
+            subtext="Pending orders"
+            icon="📦"
+            accent="purple"
+          />
 
-          <section style={{ marginTop: '1.5rem', display: 'grid', gap: '1.5rem' }}>
-            <p>Recent Payments and Parcel details are managed in their respective sections.</p>
-          </section>
+        </motion.div>
+      )}
+
+      <section style={{ marginTop: '1.5rem', display: 'grid', gap: '1.5rem' }}>
+        <p>Recent Parcel details and Tiffins are managed in their respective sections.</p>
+      </section>
     </>
   )
 }

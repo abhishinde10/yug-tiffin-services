@@ -85,6 +85,27 @@ body {
   min-height: 100vh;
   color: var(--text-dark);
   background: var(--bg-light);
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+img, picture, svg, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============= SKELETON LOADING ============= */
+.skeleton {
+  background: linear-gradient(90deg, #e8dbd1 25%, #f5ead9 50%, #e8dbd1 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 a {
@@ -561,6 +582,12 @@ h6 {
 
 .btn:hover::before {
   left: 100%;
+}
+
+.btn:active, .plan-btn:active, .location-box:active {
+  transform: scale(0.96) !important;
+  opacity: 0.85;
+  transition: transform 0.1s;
 }
 
 .btn-primary {
@@ -1906,4 +1933,205 @@ h6 {
   .swiper-button-prev {
     display: none !important;
   }
+}
+
+/* ============= FINAL MOBILE UI POLISH (<= 768px) ============= */
+@media (max-width: 768px) {
+  /* 1. Typography & Hierarchy */
+  h1, .page-title, .dashboard-title { font-size: 1.8rem !important; }
+  h2, .section-title { font-size: 1.6rem !important; }
+  h3 { font-size: 1.4rem !important; }
+
+  /* 2. Button Optimization */
+  .btn:not(.sidebar-toggle), .plan-btn, button[type="submit"] {
+    min-height: 44px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+  }
+  
+  /* Exception for table buttons and small controls */
+  table .btn, table button, .dashboard-main .card .btn, .dashboard-main .card button {
+    width: auto !important;
+    min-height: 36px !important;
+    padding: 0.4rem 0.8rem !important;
+    margin-bottom: 0;
+  }
+
+  /* 3. Form & Inputs */
+  .form-input, .form-select, .form-textarea, .input-field {
+    width: 100% !important;
+    min-height: 44px;
+    font-size: 16px; /* Prevents iOS zoom */
+  }
+
+  /* 4. Spacing */
+  .page-section {
+    padding: 1.5rem 1rem !important;
+  }
+  main, .page-container, .main-content {
+    margin-top: 10px; 
+  }
+  .pricing-section {
+    padding-top: 6rem !important; 
+  }
+
+  /* 5. Sidebar fix */
+  .sidebar { width: 280px; }
+
+  /* 6. Grid columns enforcement */
+  .dashboard-grid, .pricing-grid, .contact-container, .features-grid, .menu-cards, .footer-inner {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+  }
+
+  /* 7. TABLE TO CARD LAYOUT */
+  .table-wrapper table, 
+  .table-wrapper thead, 
+  .table-wrapper tbody, 
+  .table-wrapper th, 
+  .table-wrapper td, 
+  .table-wrapper tr,
+  table.table,
+  table.table thead,
+  table.table tbody,
+  table.table th,
+  table.table td,
+  table.table tr {
+    display: block;
+    width: 100%;
+  }
+  
+  .table-wrapper thead tr,
+  table.table thead tr,
+  .table-wrapper thead,
+  table.table thead {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    display: none !important;
+  }
+  
+  .table-wrapper tr,
+  table.table tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 1rem;
+    background: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .table-wrapper td,
+  table.table td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.6rem 0 !important;
+    text-align: right !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+    position: relative;
+    font-size: 0.95rem;
+  }
+  
+  .table-wrapper td:last-child,
+  table.table td:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .table-wrapper td::before,
+  table.table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--text-medium);
+    text-align: left;
+    padding-right: 1rem;
+    flex-shrink: 0;
+  }
+}
+
+/* ============= GLOBAL SAAS POLISH ============= */
+
+/* 1. Page Transitions */
+.fade-in-up, .app-content {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. Focus States (A11y & Polish) */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+/* 3. Empty States & Loading */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  border: 1px dashed var(--border-color);
+  color: var(--text-medium);
+  min-height: 250px;
+  animation: fadeInUp 0.4s ease-out forwards;
+  box-shadow: 0 4px 14px rgba(44, 26, 14, 0.02);
+  margin: 1rem 0;
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  color: var(--primary-light);
+}
+
+.empty-state h3, .empty-state h4, .empty-state h2 {
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.empty-state p {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.loading-spinner-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+  width: 100%;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--primary-50);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

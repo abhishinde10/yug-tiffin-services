@@ -3,7 +3,7 @@ import Sidebar from '../components/Sidebar.jsx';
 
 function AdminLayout() {
   return (
-    <section className="page-section" style={{ paddingTop: '2rem' }}>
+    <section className="page-section" style={{ paddingTop: '90px' }}>
       <div className="dashboard-layout">
         <Sidebar />
         <div className="main-content" style={{ flex: 1 }}>

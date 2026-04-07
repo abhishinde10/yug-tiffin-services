@@ -37,6 +37,18 @@ function Sidebar() {
           >
             Dashboard
           </NavLink>
+
+          {/* 👇 MOVED HERE */}
+          <NavLink
+            to="/admin/tiffin"
+            className={({ isActive }) =>
+              `sidebar-link ${isActive ? 'sidebar-link-active' : ''}`
+            }
+            onClick={closeSidebar}
+          >
+            Tiffin Tracking
+          </NavLink>
+
           <NavLink
             to="/admin/students"
             className={({ isActive }) =>
@@ -46,6 +58,7 @@ function Sidebar() {
           >
             Student Management
           </NavLink>
+
           <NavLink
             to="/admin/menu"
             className={({ isActive }) =>
@@ -55,6 +68,7 @@ function Sidebar() {
           >
             Menu Management
           </NavLink>
+
           <NavLink
             to="/admin/billing"
             className={({ isActive }) =>
@@ -64,15 +78,7 @@ function Sidebar() {
           >
             Billing
           </NavLink>
-          <NavLink
-            to="/admin/payments"
-            className={({ isActive }) =>
-              `sidebar-link ${isActive ? 'sidebar-link-active' : ''}`
-            }
-            onClick={closeSidebar}
-          >
-            Payments
-          </NavLink>
+
           <NavLink
             to="/admin/parcels"
             className={({ isActive }) =>
@@ -82,6 +88,7 @@ function Sidebar() {
           >
             Parcel Orders
           </NavLink>
+
           <NavLink
             to="/admin/feedbacks"
             className={({ isActive }) =>

@@ -23,9 +23,9 @@ import AdminDashboard from './pages/admin/AdminDashboard.jsx'
 import StudentManagement from './pages/admin/StudentManagement.jsx'
 import MenuManagement from './pages/admin/MenuManagement.jsx'
 import BillingManagement from './pages/admin/BillingManagement.jsx'
-import PaymentManagement from './pages/admin/PaymentManagement.jsx'
 import ParcelOrders from './pages/admin/ParcelOrders.jsx'
 import FeedbackManagement from './pages/admin/FeedbackManagement.jsx'
+import TiffinManagement from './pages/admin/TiffinManagement.jsx'
 
 function App() {
   return (
@@ -61,9 +61,9 @@ function App() {
               <Route path="students" element={<StudentManagement />} />
               <Route path="menu" element={<MenuManagement />} />
               <Route path="billing" element={<BillingManagement />} />
-              <Route path="payments" element={<PaymentManagement />} />
               <Route path="parcels" element={<ParcelOrders />} />
               <Route path="feedbacks" element={<FeedbackManagement />} />
+              <Route path="tiffin" element={<TiffinManagement />} />
             </Route>
           </Route>
 

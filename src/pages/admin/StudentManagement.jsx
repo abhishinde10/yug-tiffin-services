@@ -54,12 +54,14 @@ function StudentManagement() {
 
       {/* Basic Structure & Safe Rendering */}
       {loading ? (
-        <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-medium)' }}>
-          <p>Loading students spinner...</p>
+        <div className="loading-spinner-wrapper">
+          <div className="spinner"></div>
         </div>
       ) : students.length === 0 ? (
-        <div className="card" style={{ padding: '3rem', textAlign: 'center' }}>
-          <p style={{ color: 'var(--text-medium)', fontSize: '1.1rem' }}>No students found</p>
+        <div className="empty-state">
+          <div className="empty-state-icon">👥</div>
+          <h3>No students found</h3>
+          <p>There are currently no students in the directory.</p>
         </div>
       ) : (
         <div className="card" style={{ overflowX: 'auto', padding: '1rem' }}>
@@ -76,15 +78,15 @@ function StudentManagement() {
             <tbody>
               {students.map((student) => (
                 <tr key={student._id || Math.random()} style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ padding: '1rem' }}>{student.name || 'No Name'}</td>
-                  <td style={{ padding: '1rem' }}>{student.email || 'No Email'}</td>
-                  <td style={{ padding: '1rem' }}>{student.phone || '-'}</td>
-                  <td style={{ padding: '1rem' }}>
+                  <td data-label="Name" style={{ padding: '1rem' }}>{student.name || 'No Name'}</td>
+                  <td data-label="Email" style={{ padding: '1rem' }}>{student.email || 'No Email'}</td>
+                  <td data-label="Phone" style={{ padding: '1rem' }}>{student.phone || '-'}</td>
+                  <td data-label="Role" style={{ padding: '1rem' }}>
                     <span className="badge badge-success" style={{ textTransform: 'capitalize' }}>
                       {student.role || 'student'}
                     </span>
                   </td>
-                  <td style={{ padding: '1rem' }}>
+                  <td data-label="Actions" style={{ padding: '1rem' }}>
                     <button
                       onClick={() => handleDelete(student._id)}
                       className="btn"

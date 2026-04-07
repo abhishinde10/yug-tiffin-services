@@ -23,6 +23,7 @@ const orderRoutes = require('./routes/orderRoutes');
 const noticeRoutes = require('./routes/noticeRoutes');
 const billingRoutes = require('./routes/billingRoutes');
 const contactRoutes = require('./routes/contactRoutes');
+const tiffinRoutes = require('./routes/tiffinRoutes');
 
 // Mount routes
 app.use('/api/auth', authRoutes);
@@ -34,6 +35,7 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/notices', noticeRoutes);
 app.use('/api/billing', billingRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/tiffin', tiffinRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running...');

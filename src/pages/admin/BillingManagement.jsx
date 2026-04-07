@@ -163,13 +163,14 @@ function BillingManagement() {
           </div>
 
           {loading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
-              <div style={{ width: '40px', height: '40px', border: '4px solid #f3f3f3', borderTop: '4px solid #3b82f6', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
-              <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+            <div className="loading-spinner-wrapper">
+              <div className="spinner"></div>
             </div>
           ) : bills.length === 0 ? (
-            <div className="card" style={{ textAlign: 'center', padding: '3rem 1rem' }}>
-              <h3 style={{ color: 'var(--text-light)' }}>No bills available</h3>
+            <div className="empty-state">
+              <div className="empty-state-icon">📄</div>
+              <h3>No bills available</h3>
+              <p>No billing records found for the selected month.</p>
             </div>
           ) : (
             <DataTable
