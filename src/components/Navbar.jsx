@@ -33,29 +33,26 @@ function Navbar() {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="logo-section" style={{ display: 'flex', alignItems: 'center', gap: '8px', maxWidth: '75%' }}>
-          <div className="logo-container" onClick={() => navigate('/')} style={{ cursor: 'pointer', flexShrink: 0 }}>
-            <img
-              src={logo}
-              alt="Yug Tiffin Services Logo"
-              className="navbar-logo"
-            />
-          </div>
-
-          <a
-            href="https://maps.app.goo.gl/AqBEp3Pm581XZbqE6"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="location-box logo-text"
-            style={{ display: 'flex', overflow: 'hidden' }}
-          >
-            <span className="location-icon">📍</span>
-            <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              <p className="location-small">Visit Us</p>
-              <p className="location-bold" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Yug Tiffin Service</p>
-            </div>
-          </a>
+        <div className="logo-container" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+          <img
+            src={logo}
+            alt="Yug Tiffin Services Logo"
+            className="navbar-logo"
+          />
         </div>
+
+        <a
+          href="https://maps.app.goo.gl/AqBEp3Pm581XZbqE6"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="location-box"
+        >
+          <span className="location-icon">📍</span>
+          <div>
+            <p className="location-small">Visit Us</p>
+            <p className="location-bold">Yug Tiffin Service</p>
+          </div>
+        </a>
 
         <ul className={`nav-menu ${isOpen ? 'nav-open' : ''}`}>
           {navItems.map((item) => (

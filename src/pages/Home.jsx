@@ -147,10 +147,10 @@ function Home() {
         href="https://wa.me/+918888165662"
         target="_blank"
         rel="noopener noreferrer"
-        className="chat-whatsapp"
+        className="floating-whatsapp"
       >
         <MessageCircle size={24} />
-        <span>Chat on WhatsApp</span>
+        <span className="hidden sm:inline">Chat on WhatsApp</span>
       </a>
     </>
   )
