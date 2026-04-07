@@ -2135,3 +2135,75 @@ h6 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* ============= WHATSAPP AND NAVBAR FIXES ============= */
+
+.chat-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-whatsapp:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.6);
+  color: white;
+}
+
+.chat-whatsapp:active {
+  transform: scale(0.95);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap !important;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .logo-text, .location-bold, .location-small {
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+  
+  .location-box {
+    display: flex !important;
+  }
+
+  .nav-menu {
+    display: none !important;
+  }
+
+  .nav-menu.nav-open {
+    display: flex !important;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .chat-whatsapp {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}
