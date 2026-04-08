@@ -3,14 +3,16 @@ import Sidebar from '../components/Sidebar.jsx';
 
 function AdminLayout() {
   return (
-    <section className="page-section" style={{ paddingTop: '90px' }}>
-      <div className="dashboard-layout">
-        <Sidebar />
-        <div className="main-content" style={{ flex: 1 }}>
-          <Outlet />
+    <div className="admin-page">
+      <section className="page-section" style={{ paddingTop: '90px' }}>
+        <div className="admin-layout">
+          <Sidebar />
+          <div className="admin-content" style={{ flex: 1 }}>
+            <Outlet />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 

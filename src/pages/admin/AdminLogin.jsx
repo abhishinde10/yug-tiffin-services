@@ -7,14 +7,11 @@ import api from '../../services/api.js'
 
 function AdminLogin() {
   const navigate = useNavigate()
-  const [isRegistering, setIsRegistering] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
 
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
-    phone: '',
     password: '',
   })
 
@@ -27,32 +24,24 @@ function AdminLogin() {
     setLoading(true)
 
     try {
-      if (isRegistering) {
-        // Register Admin
-        const res = await api.post('/auth/register-admin', formData)
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('user', JSON.stringify(res.data))
-        toast.success('Registration successful!')
-        navigate('/admin/dashboard')
-      } else {
-        // Login Admin
-        const res = await api.post('/auth/login', {
-          email: formData.email,
-          password: formData.password
-        })
-        
-        // Ensure user is an admin before letting them through
-        if (res.data.role !== 'admin') {
-          toast.error('Access denied. Admin role required.')
-          setLoading(false)
-          return
-        }
-
-        localStorage.setItem('token', res.data.token)
-        localStorage.setItem('user', JSON.stringify(res.data))
-        toast.success('Login successful!')
-        navigate('/admin/dashboard')
+      // Login Admin
+      const res = await api.post('/auth/login', {
+        email: formData.email,
+        password: formData.password
+      })
+      
+      // Ensure user is an admin before letting them through
+      if (res.data.role !== 'admin') {
+        toast.error('Access denied. Admin role required.')
+        setLoading(false)
+        navigate('/') // Extra check added per user request
+        return
       }
+
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user', JSON.stringify(res.data))
+      toast.success('Login successful!')
+      navigate('/admin/dashboard')
     } catch (error) {
       toast.error(error.response?.data?.message || 'Invalid email or password.')
     } finally {
@@ -89,37 +78,14 @@ function AdminLogin() {
             Y
           </div>
           <h1 style={{ fontSize: '1.8rem', color: 'var(--text-dark)', marginBottom: '0.5rem', fontFamily: 'var(--font-heading)' }}>
-            {isRegistering ? 'Admin Registration' : 'Welcome back'}
+            Welcome back
           </h1>
           <p style={{ color: 'var(--text-medium)', fontSize: '0.95rem' }}>
-            {isRegistering 
-              ? 'Create a new admin account to manage the system.' 
-              : 'Please enter your admin credentials to continue.'}
+            Please enter your admin credentials to continue.
           </p>
         </div>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          {isRegistering && (
-            <>
-              <FormField
-                label="Full Name"
-                id="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Enter admin name"
-                required
-              />
-              <FormField
-                label="Phone Number"
-                id="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Enter phone number"
-                required
-              />
-            </>
-          )}
-
           <FormField
             label="Admin Email"
             id="email"
@@ -165,25 +131,13 @@ function AdminLogin() {
             disabled={loading}
             style={{ width: '100%', justifyContent: 'center', marginTop: '1rem', padding: '0.85rem' }}
           >
-            {loading ? 'Processing...' : (isRegistering ? 'Register' : 'Login')}
+            {loading ? 'Processing...' : 'Login'}
           </button>
         </form>
-
-        <div style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-medium)' }}>
-          <p>
-            {isRegistering ? 'Already have an admin account?' : "Need an admin account?"}{' '}
-            <button 
-              type="button" 
-              style={{ border: 'none', background: 'transparent', color: 'var(--primary)', cursor: 'pointer', padding: 0, fontWeight: 600, textDecoration: 'underline' }}
-              onClick={() => setIsRegistering(!isRegistering)}
-            >
-              {isRegistering ? 'Login here' : 'Register here'}
-            </button>
-          </p>
-        </div>
       </motion.div>
     </section>
   )
 }
 
 export default AdminLogin
+

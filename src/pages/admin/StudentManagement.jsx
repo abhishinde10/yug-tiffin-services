@@ -64,7 +64,8 @@ function StudentManagement() {
           <p>There are currently no students in the directory.</p>
         </div>
       ) : (
-        <div className="card" style={{ overflowX: 'auto', padding: '1rem' }}>
+        <div className="card" style={{ padding: '1rem' }}>
+          <div className="table-container">
           <table className="table" style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ borderBottom: '2px solid #eee', textAlign: 'left' }}>
@@ -107,10 +108,11 @@ function StudentManagement() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </>
-  );
+  )
 }
 
 export default StudentManagement;

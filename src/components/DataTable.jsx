@@ -1,7 +1,7 @@
 function DataTable({ columns, rows }) {
   return (
     <div className="table-wrapper">
-      <div style={{ overflowX: 'auto' }}>
+      <div className="table-container">
         <table className="table">
           <thead>
             <tr>

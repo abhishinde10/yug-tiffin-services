@@ -9,11 +9,11 @@ import toast, { Toaster } from 'react-hot-toast'
 function StudentDashboard() {
   const [dashboardData, setDashboardData] = useState({
     membershipDetails: { plan: 'Loading...', joinDate: null },
-    todaysMenu: null,
     paymentStatus: 'Loading...',
     parcelHistory: [],
   })
   const [bills, setBills] = useState([])
+  const [menu, setMenu] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -37,8 +37,19 @@ function StudentDashboard() {
       }
     }
 
+    const fetchMenu = async () => {
+      try {
+        const res = await api.get('/menu/today')
+        console.log("Menu Data:", res.data)
+        setMenu(res.data)
+      } catch (error) {
+        console.error('Failed to load menu data', error)
+      }
+    }
+
     fetchDashboard()
     fetchBills()
+    fetchMenu()
   }, [])
 
   // Format parcel history for DataTable
@@ -120,7 +131,7 @@ function StudentDashboard() {
                 <h2 className="dashboard-title">Today&apos;s Menu</h2>
                 <p className="page-subtitle">Fresh, home-style food for lunch and dinner.</p>
 
-                {dashboardData.todaysMenu ? (
+                {menu ? (
                   <div className="menu-cards">
                     <div className="menu-card">
                       <div className="menu-header">
@@ -128,7 +139,7 @@ function StudentDashboard() {
                         <span className="menu-time">12:00 PM – 2:00 PM</span>
                       </div>
                       <ul className="menu-items">
-                        {dashboardData.todaysMenu.lunchItems.map((item, idx) => (
+                        {menu.lunchItems.map((item, idx) => (
                           <li key={idx} className="menu-item">
                             <span>{item}</span>
                           </li>
@@ -142,7 +153,7 @@ function StudentDashboard() {
                         <span className="menu-time">7:00 PM – 9:00 PM</span>
                       </div>
                       <ul className="menu-items">
-                        {dashboardData.todaysMenu.dinnerItems.map((item, idx) => (
+                        {menu.dinnerItems.map((item, idx) => (
                           <li key={idx} className="menu-item">
                             <span>{item}</span>
                           </li>
@@ -151,7 +162,7 @@ function StudentDashboard() {
                     </div>
                   </div>
                 ) : (
-                  <p>No menu has been posted for today yet.</p>
+                  <p>No menu available today</p>
                 )}
 
                 <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>

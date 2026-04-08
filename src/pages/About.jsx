@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './About.css';
 import kakaImg from '../assets/images/Kaka_Img1.jpeg';
+import kakaImg2 from '../assets/images/Kaka_Img2.jpeg';
 import member1Img from '../assets/images/Member1.png';
 import member2Img from '../assets/images/Member2.png';
 
@@ -70,13 +71,13 @@ function About() {
           variants={staggerContainer}
         >
           <motion.p variants={fadeIn}>
-            At <strong>Yug Tiffin Services</strong>, we bring the warmth and comfort of home-cooked meals directly to your daily life. Inspired by beautifully rooted traditional Maharashtrian values and the historic legacy of service from the Mumbai Dabbawalas, our mission is to deliver fresh, hygienic, and affordable meals without fail.
+            At <strong>Yug Tiffin Services</strong>, we bring the warmth and comfort of home-cooked meals into your everyday life. Rooted in traditional Maharashtrian values and inspired by a long-standing legacy of service from our respected elders, we began our journey in 2012. For over 14 years, our mission has remained simple — to provide fresh, hygienic, and affordable meals with complete reliability.
           </motion.p>
           <motion.p variants={fadeIn}>
-            We know what it means to miss the taste of food made with love. That's why every single tiffin that leaves our kitchen is meticulously prepared using only the finest, freshest ingredients, ensuring each bite brings back memories of home.
+            We understand how much people miss the taste of homemade food. That is why every tiffin prepared in our kitchen is made with care, using high-quality, fresh ingredients, ensuring each meal feels just like home.
           </motion.p>
           <motion.p variants={fadeIn}>
-            With an unwavering dedication, everyday consistency, and an unbreakable bond of trust, we go above and beyond so you never have to compromise on your health or the authentic flavors you long for.
+            With strong dedication, consistent quality, and the trust of our customers, we continue to serve with commitment so you never have to compromise on your health or the authentic flavors you love.
           </motion.p>
         </motion.div>
       </div>
@@ -99,8 +100,9 @@ function About() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="inspiration-content">
+          <h2 className="inspiration-title2">Our Inspiration</h2>
           <div className="inspiration-image-wrapper">
-            <img src={kakaImg} alt="Our Inspiration" />
+            <img src={kakaImg2} alt="Our Inspiration" />
           </div>
           <h2 className="inspiration-title">Our Inspiration</h2>
           <p className="inspiration-subtitle">The Heart Behind Yug Tiffin Services</p>

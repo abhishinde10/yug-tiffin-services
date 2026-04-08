@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const { sendFeedback, getAllFeedbacks } = require("../controllers/contactController");
+const { protect } = require('../middleware/authMiddleware');
+const { admin } = require('../middleware/adminMiddleware');
 
-router.post("/feedback", sendFeedback);
-router.get("/all", getAllFeedbacks);
+router.post("/feedback", protect, sendFeedback);
+router.get("/all", protect, admin, getAllFeedbacks);
 
-router.put("/:id/review", async (req, res) => {
+router.put("/:id/review", protect, admin, async (req, res) => {
   try {
     const ContactFeedback = require("../models/ContactFeedback");
     const feedback = await ContactFeedback.findByIdAndUpdate(
@@ -21,7 +23,7 @@ router.put("/:id/review", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", protect, admin, async (req, res) => {
   try {
     const ContactFeedback = require("../models/ContactFeedback");
     await ContactFeedback.findByIdAndDelete(req.params.id);

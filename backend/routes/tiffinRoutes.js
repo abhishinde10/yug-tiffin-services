@@ -8,17 +8,19 @@ const {
   giveTiffin, 
   receiveTiffin 
 } = require('../controllers/tiffinController');
+const { protect } = require('../middleware/authMiddleware');
+const { admin } = require('../middleware/adminMiddleware');
 
 // Student CRD
-router.post('/students', addStudent);
-router.get('/students', getStudents);
-router.delete('/students/:id', deleteStudent);
+router.post('/students', protect, admin, addStudent);
+router.get('/students', protect, admin, getStudents);
+router.delete('/students/:id', protect, admin, deleteStudent);
 
 // Records
-router.get('/records', getDailyRecords);
+router.get('/records', protect, admin, getDailyRecords);
 
 // Actions
-router.put('/:id/give', giveTiffin);
-router.put('/:id/receive', receiveTiffin);
+router.put('/:id/give', protect, admin, giveTiffin);
+router.put('/:id/receive', protect, admin, receiveTiffin);
 
 module.exports = router;

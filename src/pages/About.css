@@ -3,12 +3,13 @@
 
 .about-page {
   background-color: #fff8f2;
-  background-image: 
+  background-image:
     radial-gradient(at top right, rgba(255, 122, 0, 0.05) 0%, transparent 50%),
     radial-gradient(at bottom left, rgba(255, 122, 0, 0.08) 0%, transparent 60%);
   color: #3b2f2f;
   font-family: 'Poppins', sans-serif;
-  padding: 8rem 2rem 6rem; /* Extra top padding for fixed navbar */
+  padding: 8rem 2rem 6rem;
+  /* Extra top padding for fixed navbar */
   overflow: hidden;
   min-height: 100vh;
 }
@@ -73,7 +74,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(59,47,47,0.2) 0%, transparent 40%);
+  background: linear-gradient(to top, rgba(59, 47, 47, 0.2) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -178,6 +179,19 @@
   margin: 0 auto;
 }
 
+.inspiration-title,
+.team-title {
+  transition: all 0.3s ease;
+}
+
+.inspiration-title:hover {
+  color: #0ed221;
+}
+
+.about-text-wrapper p {
+  letter-spacing: 0.3px;
+}
+
 /* 4. Team Section */
 .about-team-section {
   max-width: 900px;
@@ -269,24 +283,24 @@
     gap: 3.5rem;
     max-width: 600px;
   }
-  
+
   .about-text-wrapper {
     text-align: center;
   }
-  
+
   .about-inspiration-section {
     padding: 2.5rem 1.5rem;
   }
-  
+
   .inspiration-image-wrapper {
     width: 160px;
     height: 160px;
   }
-  
+
   .inspiration-title {
     font-size: 2.4rem;
   }
-  
+
   .team-cards-container {
     gap: 2rem;
   }
@@ -300,14 +314,18 @@
   .about-main-heading {
     font-size: 2.8rem;
   }
-  
+
   .about-tagline {
     font-size: 1.3rem;
   }
-  
+
   .team-cards-container {
     grid-template-columns: 1fr;
     max-width: 400px;
     margin: 0 auto;
+  }
+
+  .team-card:hover {
+    transform: translateY(-8px) scale(1.02);
   }
 }

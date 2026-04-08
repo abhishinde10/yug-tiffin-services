@@ -209,7 +209,8 @@ function TiffinManagement() {
               <p>No students in this category today.</p>
             </div>
           ) : (
-            <table className="table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+            <div className="table-container">
+              <table className="table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
               <thead style={{ position: 'sticky', top: 0, background: '#f8fafc', zIndex: 1, boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
                 <tr style={{ color: 'var(--text-light)', fontSize: '0.75rem', textTransform: 'uppercase' }}>
                   <th style={{ padding: '0.5rem 1rem', fontWeight: 600 }}>Name</th>
@@ -261,6 +262,7 @@ function TiffinManagement() {
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </div>
       </div>
