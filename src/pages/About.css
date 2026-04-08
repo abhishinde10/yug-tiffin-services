@@ -135,7 +135,7 @@
   margin: 0 auto 2rem;
   border-radius: 50%;
   overflow: hidden;
-  border: 6px solid #fff8f2;
+  border: 4px solid #fff8f2;
   box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.5), 0 15px 25px rgba(255, 122, 0, 0.15);
 }
 
@@ -147,13 +147,13 @@
 
 .inspiration-title {
   font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
-  color: #3b2f2f;
+  font-size: 2.8rem;
+  color: #ee880c;
   margin-bottom: 0.5rem;
 }
 
 .inspiration-subtitle {
-  color: #ff7a00;
+  color: #111111;
   font-weight: 600;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
@@ -186,6 +186,7 @@
 
 .inspiration-title:hover {
   color: #0ed221;
+
 }
 
 .about-text-wrapper p {

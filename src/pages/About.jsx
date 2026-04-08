@@ -104,7 +104,7 @@ function About() {
           <div className="inspiration-image-wrapper">
             <img src={kakaImg2} alt="Our Inspiration" />
           </div>
-          <h2 className="inspiration-title">Our Inspiration</h2>
+          <h2 className="inspiration-title">आदरणीय भागीरथी दामूअण्णा राजगुरू</h2>
           <p className="inspiration-subtitle">The Heart Behind Yug Tiffin Services</p>
           <blockquote className="inspiration-quote">"ज्यांच्या हातच्या चवीतून या प्रवासाची सुरुवात झाली"</blockquote>
           <p className="inspiration-desc">
