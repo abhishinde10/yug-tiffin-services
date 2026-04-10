@@ -22,7 +22,7 @@ function Contact() {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/contact/feedback", {
+      const res = await axios.post("https://yug-backend-3v83.onrender.com/api/contact/feedback", {
         name: formData.name,
         mobile: formData.mobile,
         message: formData.message

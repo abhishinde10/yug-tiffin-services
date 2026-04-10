@@ -8,7 +8,7 @@ function Menu() {
   useEffect(() => {
     const fetchTodayMenu = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/menu/today')
+        const { data } = await axios.get('https://yug-backend-3v83.onrender.com/api/menu/today')
         setMenu(data)
       } catch (error) {
         console.error('Error fetching today menu:', error)

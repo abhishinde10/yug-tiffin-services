@@ -14,7 +14,7 @@ function FeedbackManagement() {
 
   const fetchFeedbacks = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/contact/all");
+      const res = await axios.get("https://yug-backend-3v83.onrender.com/api/contact/all");
       setFeedbacks(res.data || []);
     } catch (error) {
       console.error(error);
@@ -25,7 +25,7 @@ function FeedbackManagement() {
 
   const handleReview = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/contact/${id}/review`);
+      await axios.put(`https://yug-backend-3v83.onrender.com/api/contact/${id}/review`);
 
       setFeedbacks((prev) =>
         prev.map((f) =>
@@ -41,7 +41,7 @@ function FeedbackManagement() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/contact/${id}`);
+      await axios.delete(`https://yug-backend-3v83.onrender.com/api/contact/${id}`);
 
       setFeedbacks((prev) =>
         prev.filter((f) => f._id !== id)
