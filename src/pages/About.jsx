@@ -162,7 +162,9 @@ function About() {
                 <img src={member.image} alt={member.name} />
               </div>
               <h3 className="team-card-name">{member.name}</h3>
-              <p className="team-card-role">{member.role}</p>
+              <p className="team-card-role">
+                {member.role} <span className="year">(2012–Present)</span>
+              </p>
               <p className="team-card-desc">{member.desc}</p>
             </motion.div>
           ))}

@@ -265,6 +265,11 @@
   margin-bottom: 1rem;
 }
 
+.team-card-role .year {
+  color: #555;
+  /* black */
+}
+
 .team-card-desc {
   font-size: 0.95rem;
   color: #5a4b4b;
@@ -325,6 +330,8 @@
     max-width: 400px;
     margin: 0 auto;
   }
+
+
 
   .team-card:hover {
     transform: translateY(-8px) scale(1.02);
