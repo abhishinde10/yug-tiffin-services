@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: 'https://yug-backend-3v83.onrender.com',
 });
 
 // Add a request interceptor to attach the JWT token to every request
