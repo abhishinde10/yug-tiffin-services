@@ -10,7 +10,14 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://yug-tiffin-services.vercel.app"
+  ],
+  credentials: true
+}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // To accept JSON data
 
 // Route imports
