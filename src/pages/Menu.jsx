@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../services/api.js'
 
 function Menu() {
   const [menu, setMenu] = useState(null)
@@ -8,7 +8,7 @@ function Menu() {
   useEffect(() => {
     const fetchTodayMenu = async () => {
       try {
-        const { data } = await axios.get('https://yug-backend-3v83.onrender.com/api/menu/today')
+        const { data } = await api.get('/menu/today')
         setMenu(data)
       } catch (error) {
         console.error('Error fetching today menu:', error)

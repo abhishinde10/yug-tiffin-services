@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api.js';
 import { motion } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import { Mail, Phone, MapPin } from 'lucide-react';
@@ -22,7 +22,7 @@ function Contact() {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("https://yug-backend-3v83.onrender.com/api/contact/feedback", {
+      const res = await api.post("/contact/feedback", {
         name: formData.name,
         mobile: formData.mobile,
         message: formData.message

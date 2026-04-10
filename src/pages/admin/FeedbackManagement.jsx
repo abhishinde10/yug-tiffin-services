@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../services/api.js';
 import { toast } from 'react-hot-toast';
 import "../../styles/feedback.css";
 
@@ -14,7 +14,7 @@ function FeedbackManagement() {
 
   const fetchFeedbacks = async () => {
     try {
-      const res = await axios.get("https://yug-backend-3v83.onrender.com/api/contact/all");
+      const res = await api.get("/contact/all");
       setFeedbacks(res.data || []);
     } catch (error) {
       console.error(error);
@@ -25,7 +25,7 @@ function FeedbackManagement() {
 
   const handleReview = async (id) => {
     try {
-      await axios.put(`https://yug-backend-3v83.onrender.com/api/contact/${id}/review`);
+      await api.put(`/contact/${id}/review`);
 
       setFeedbacks((prev) =>
         prev.map((f) =>
@@ -41,7 +41,7 @@ function FeedbackManagement() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://yug-backend-3v83.onrender.com/api/contact/${id}`);
+      await api.delete(`/contact/${id}`);
 
       setFeedbacks((prev) =>
         prev.filter((f) => f._id !== id)
@@ -72,7 +72,7 @@ function FeedbackManagement() {
           <p className="feedback-subtitle">Manage customer feedback</p>
 
           <div className="filter-buttons">
-            {["all","pending","reviewed"].map(tab => (
+            {["all", "pending", "reviewed"].map(tab => (
               <button
                 key={tab}
                 className={filter === tab ? "active" : ""}

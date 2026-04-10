@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://yug-backend-3v83.onrender.com',
+  baseURL: import.meta.env.VITE_API_URL || 'https://yug-backend-3v83.onrender.com/api',
 });
 
 // Add a request interceptor to attach the JWT token to every request
@@ -25,10 +25,10 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response && error.response.status === 401) {
-      // Optional: Clear token and redirect to login if token is expired/invalid
-      // localStorage.removeItem('token');
-      // localStorage.removeItem('user');
-      // window.location.href = '/'; 
+      // Clear token and redirect to login if token is expired/invalid
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/';
     }
     return Promise.reject(error);
   }

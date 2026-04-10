@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../services/api.js';
 import { toast } from 'react-hot-toast';
 
 function TiffinManagement() {
@@ -34,7 +34,7 @@ function TiffinManagement() {
   const fetchRecords = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://yug-backend-3v83.onrender.com/api/tiffin/records?date=${date}`);
+      const response = await api.get(`/tiffin/records?date=${date}`);
       setRecords(response.data);
     } catch (error) {
       toast.error('Failed to fetch tiffin records.');
@@ -52,7 +52,7 @@ function TiffinManagement() {
   const handleAddStudent = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://yug-backend-3v83.onrender.com/api/tiffin/students', newStudent);
+      await api.post('/tiffin/students', newStudent);
       toast.success('Student Added Successfully!');
       setNewStudent({ name: '', mobile: '', Class: '' });
       setShowAddForm(false);
@@ -65,7 +65,7 @@ function TiffinManagement() {
 
   const handleGiveTiffin = async (recordId) => {
     try {
-      await axios.put(`https://yug-backend-3v83.onrender.com/api/tiffin/${recordId}/give`);
+      await api.put(`/tiffin/${recordId}/give`);
       toast.success('Tiffin Given!');
       fetchRecords();
     } catch (error) {
@@ -75,7 +75,7 @@ function TiffinManagement() {
 
   const handleMarkReceived = async (recordId) => {
     try {
-      await axios.put(`https://yug-backend-3v83.onrender.com/api/tiffin/${recordId}/receive`);
+      await api.put(`/tiffin/${recordId}/receive`);
       toast.success('Tiffin Received!');
       fetchRecords();
     } catch (error) {
