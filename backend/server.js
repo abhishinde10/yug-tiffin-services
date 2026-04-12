@@ -13,7 +13,9 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://yug-tiffin-services.vercel.app"
+    "https://yug-tiffin-services.vercel.app",
+    "https://yugtiffin.com",
+    "https://www.yugtiffin.com"
   ],
   credentials: true
 }));
