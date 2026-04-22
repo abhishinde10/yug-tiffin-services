@@ -36,7 +36,7 @@ function App() {
 
       <div className="app-content">
         <Routes>
-          {/* Public marketing pages */}
+          {/* Public pages */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/menu" element={<Menu />} />

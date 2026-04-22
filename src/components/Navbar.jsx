@@ -33,7 +33,7 @@ function Navbar() {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <div className="logo-section" onClick={() => window.open("https://maps.google.com/?q=KK+Wagh+Engineering+College+Nashik", "_blank")} style={{ cursor: 'pointer' }}>
+        <div className="logo-section" onClick={() => window.open("https://maps.app.goo.gl/TBg1BFQvP38SZPur7", "_blank")} style={{ cursor: 'pointer' }}>
           <img src={logo} alt="Yug Tiffin Services Logo" className="navbar-logo" />
           <div className="logo-text">
             <small>📍 Visit Us</small>
@@ -65,7 +65,7 @@ function Navbar() {
                     <div className="contact-drop-item">
                       <span className="drop-icon">📍</span>
                       <div className="drop-text">
-                        <a href="https://maps.app.goo.gl/dfFs7m4xw6DwTBZq9" target="_blank" rel="noopener noreferrer">
+                        <a href="https://maps.app.goo.gl/TBg1BFQvP38SZPur7" target="_blank" rel="noopener noreferrer">
                           Kiran Apartment, Gala No. 7,<br />Amrutdham, Panchavati,<br />Nashik
                         </a>
                       </div>

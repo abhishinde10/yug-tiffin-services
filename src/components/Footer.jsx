@@ -38,7 +38,7 @@ function Footer() {
             <div className="footer-contact-item">
               <MapPin size={20} />
               <a
-                href="https://maps.app.goo.gl/9xevzJiwbvojd36u6"
+                href="https://maps.app.goo.gl/TBg1BFQvP38SZPur7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
