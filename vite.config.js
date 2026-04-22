@@ -41,11 +41,14 @@ export default defineConfig({
       },
 
       workbox: {
-        //Precache build files (CSS, JS, images)
-        globPatterns: ['**/*.{js,css,html,png,jpg,jpeg,svg}'],
+        // ✅ FIX: allow large files (IMPORTANT)
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
+
+        // Precache build files
+        globPatterns: ['**/*.{js,css,html,ico,png,jpg,jpeg,svg}'],
 
         runtimeCaching: [
-          // API caching (your backend)
+          // 🔵 API caching
           {
             urlPattern: /^https:\/\/yug-backend-3v83\.onrender\.com\/api\/.*/i,
             handler: 'NetworkFirst',
@@ -54,7 +57,7 @@ export default defineConfig({
               networkTimeoutSeconds: 5,
               expiration: {
                 maxEntries: 50,
-                maxAgeSeconds: 300 // 5 min
+                maxAgeSeconds: 300
               },
               cacheableResponse: {
                 statuses: [0, 200]
@@ -62,7 +65,7 @@ export default defineConfig({
             }
           },
 
-          // Images caching
+          // 🟢 Images caching
           {
             urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/i,
             handler: 'CacheFirst',
@@ -70,12 +73,12 @@ export default defineConfig({
               cacheName: 'image-cache',
               expiration: {
                 maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+                maxAgeSeconds: 60 * 60 * 24 * 30
               }
             }
           },
 
-          //Static files (CSS/JS)
+          // 🟡 Static files
           {
             urlPattern: /\.(?:js|css)$/i,
             handler: 'StaleWhileRevalidate',
@@ -90,5 +93,10 @@ export default defineConfig({
         enabled: true
       }
     })
-  ]
+  ],
+
+  // ✅ Optional: remove big chunk warning
+  build: {
+    chunkSizeWarningLimit: 1000
+  }
 })
